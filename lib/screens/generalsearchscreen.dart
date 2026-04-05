@@ -350,7 +350,7 @@ class _GeneralSearchScreenState extends State<GeneralSearchScreen>
       category: category,
       limit: 31,
       fromCache: fromCache,
-      fields: [MalApi.listDetailedFields],
+      fields: [MalApi.listDetailedFields, 'my_list_status'],
     );
     results = searchResult?.data ?? [];
   }

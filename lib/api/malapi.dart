@@ -28,7 +28,7 @@ class MalApi {
   };
 
   static const listDetailedFields =
-      "num_episodes,broadcast,start_date,alternative_titles,status,mean,num_list_users,genres,media_type,num_volumes";
+      "num_episodes,broadcast,start_date,alternative_titles,status,mean,num_list_users,genres,media_type,num_volumes,my_list_status";
 
   static const userMangaFields =
       'my_list_status{is_rewatching,is_rereading,num_times_rewatched,num_times_reread,priority,rewatch_value,reread_value,start_date,finish_date,tags,comments}';
