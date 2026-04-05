@@ -18,6 +18,7 @@ import 'package:dailyanimelist/widgets/common/image_preview.dart';
 import 'package:dailyanimelist/widgets/custombutton.dart';
 import 'package:dailyanimelist/widgets/headerwidget.dart';
 import 'package:dailyanimelist/widgets/home/animecard.dart';
+import 'package:dailyanimelist/widgets/home/nodebadge.dart';
 import 'package:dailyanimelist/widgets/user/contentlistwidget.dart';
 import 'package:dailyanimelist/widgets/will_pop_widget.dart';
 import 'package:dal_commons/commons.dart';
@@ -545,6 +546,7 @@ class _CustomizableFieldWidgetState extends State<CustomizableFieldWidget> {
       CustomizableFieldType.airing_date => _airingDateWidget(),
       CustomizableFieldType.next_episode_full_counter =>
           _nextEpisodeFullCounterWidget(),
+      CustomizableFieldType.list_status => _listStatusWidget(),
       _ => SB.z
     };
   }
@@ -945,6 +947,13 @@ class _CustomizableFieldWidgetState extends State<CustomizableFieldWidget> {
       style: TextStyle(fontSize: 11),
       textScaler: TextScaler.linear(1.0),
     );
+  }
+
+  Widget _listStatusWidget() {
+    if (myListStatus == null) return SB.z;
+    final nsv = NodeStatusValue.fromListStatus(myListStatus);
+    if (nsv.status == null) return SB.z;
+    return StatusBadge(nsv);
   }
 }
 

@@ -230,7 +230,21 @@ List<CustomizableField> getDefaultCustomizableFields() {
     _editBtn(),
     _nextEpisodeFullCounter(),
     _airingDate(),
+    _listStatusField(),
   ];
+}
+
+CustomizableField _listStatusField() {
+  return CustomizableField(
+    hidden: true,
+    type: CustomizableFieldType.list_status,
+    title: 'Status Badge',
+    description: 'Your watch status (Watching, Completed, etc.)',
+    position: Position(
+      top: 5,
+      right: 5,
+    ),
+  );
 }
 
 CustomizableField _airingDate() {
