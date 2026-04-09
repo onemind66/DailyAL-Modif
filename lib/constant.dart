@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:ui' as ui;
 import 'dart:ui';
+import 'dart:async'; // Untuk timeout
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -518,8 +519,19 @@ bool shouldUpdateContent(
 }
 
 Future<bool> hasConnection() async {
-  final connectivityResult = await Connectivity().checkConnectivity();
-  return !connectivityResult.contains(ConnectivityResult.none);
+  try {
+    final result = await InternetAddress.lookup('myanimelist.net')
+        .timeout(const Duration(seconds: 5));
+    return result.isNotEmpty && result[0].rawAddress.isNotEmpty;
+  } catch (_) {
+    // Fallback ke connectivity_plus
+    try {
+      final connectivityResult = await Connectivity().checkConnectivity();
+      return !connectivityResult.contains(ConnectivityResult.none);
+    } catch (_) {
+      return true; // Asumsikan ada koneksi, biar API yang tentukan
+    }
+  }
 }
 
 Future<void> showToast(String message, {Toast? toast}) async {

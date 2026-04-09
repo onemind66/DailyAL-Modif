@@ -87,11 +87,11 @@ dependencies:
   add_2_calendar:
     git:
       url: https://github.com/JICA98/add_2_calendar.git
+  json_annotation: 4.9.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  json_annotation: ^4.0.1
   json_serializable: ^6.7.1
   build_runner: ^2.1.7
   intl_utils: ^2.8.4
